@@ -1,0 +1,49 @@
+$component: 'sentiment';
+
+.#{$component} {
+  &__months {
+    display: flex;
+
+  }
+
+  &__month {
+    flex: 1;
+    display: grid;
+    grid-template:  "a b"
+                    "c d";
+    grid-gap: 1em;
+
+    & + & {
+      border-left: 1px solid #bbb;
+      padding-left: 1em;
+    }
+  }
+
+  &__date {
+    font-size: 2em;
+    grid-area: a;
+  }
+
+  &__trend {
+    font-size: 3em;
+    grid-area: b;
+  }
+
+  &__change {
+    grid-area: c;
+  }
+
+  &__mspr {
+    grid-area: d;
+  }
+
+
+}
+
+label {
+  font-weight: bold;
+
+  &::after {
+    content: ":";
+  }
+}

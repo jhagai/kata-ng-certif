@@ -1,0 +1,8 @@
+$component: 'app';
+
+.#{$component} {
+  &__layout {
+    margin: auto;
+    width: 1400px;
+  }
+}

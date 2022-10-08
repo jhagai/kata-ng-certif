@@ -1,0 +1,34 @@
+<div>
+  <div class="stock-card__header">
+    <div class="stock-card__symbol">
+      {{ symbol$ | async }}
+    </div>
+
+    <div class="stock-card__name">
+      {{ symbol$ | async }}
+    </div>
+  </div>
+  <div class="stock-card__content">
+    <div class="sentiment__months" *ngIf="sentiment$ | async as sentiment">
+      <div *ngFor="let sentimentMonth of sentiment; trackBy: trackByFn" class="sentiment__month">
+        <div class="sentiment__date">
+          {{ sentimentMonth.date | date:'MMM y' }}
+        </div>
+        <div class="sentiment__trend">
+          <app-trend-arrow [value]="sentimentMonth.change"></app-trend-arrow>
+        </div>
+        <div class="sentiment__change">
+          <label>Change</label>
+          <div>{{ sentimentMonth.change | number }}</div>
+        </div>
+        <div class="sentiment__mspr">
+          <label>MSPR</label>
+          <div>{{ sentimentMonth.mspr | number }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<a id="backBtn" [routerLink]="['/']">Back to stock list</a>
+
+

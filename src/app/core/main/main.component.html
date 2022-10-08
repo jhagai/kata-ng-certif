@@ -1,0 +1,4 @@
+<div class="core__layout">
+  <app-add-stock (add)="trackStock($event)"></app-add-stock>
+  <app-list-stocks [trackedStocks]="trackedStocks" (untrack)="remove($event)"></app-list-stocks>
+</div>

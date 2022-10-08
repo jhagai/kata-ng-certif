@@ -1,0 +1,13 @@
+$component: "list-stocks";
+
+.#{$component} {
+  &__wrapper {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    app-stock-quote {
+      flex: 0 0 30em;
+      display: block;
+    }
+  }
+}

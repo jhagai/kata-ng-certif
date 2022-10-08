@@ -1,0 +1,15 @@
+$component: 'core';
+
+.#{$component} {
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+}
+
+app-add-stock {
+  width: 700px;
+  margin: 0 auto;
+  display: block;
+}

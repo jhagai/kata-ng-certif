@@ -1,0 +1,44 @@
+<section *ngIf="viewState$ | async as asyncViewState">
+
+  <ng-container *ngIf="isSuccess(asyncViewState) as asyncViewStateSuccess">
+    <app-success [data]="asyncViewStateSuccess" (untrack)="untrackStock()"></app-success>
+  </ng-container>
+
+  <ng-container *ngIf="isFailure(asyncViewState) as asyncViewStateFailure">
+    <div class="stock-card__header">
+      <div class="stock-card__symbol">
+        {{ asyncViewStateFailure.symbol }}
+      </div>
+      <div class="stock-card__name">
+        ???
+      </div>
+      <button [id]="asyncViewStateFailure.removeBtnId" type="button" class="stock-card__close"
+              (click)="untrackStock()">
+        X
+      </button>
+    </div>
+    <div class="stock-card__content">
+      An error occurred while trying to load stock {{ asyncViewStateFailure.symbol }}
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isPending(asyncViewState) as asyncViewStatePending">
+    <div class="stock-card__header">
+      <div class="stock-card__symbol">
+        {{ asyncViewStatePending.symbol }}
+      </div>
+      <div class="stock-card__name">
+        ???
+      </div>
+      <button [id]="asyncViewStatePending.removeBtnId" type="button" class="stock-card__close"
+              (click)="untrackStock()">
+        X
+      </button>
+    </div>
+    <div class="stock-card__content">
+      Loading stock {{ asyncViewStatePending.symbol }}
+    </div>
+  </ng-container>
+
+
+</section>

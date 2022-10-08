@@ -1,0 +1,8 @@
+<section>
+  <h1>stock tracker</h1>
+  <p>Enter the symbol of a stock to track <span class="add-stock__paragraph_details">(ie. AAPL, TSLA, GOOGL)</span></p>
+  <form #f=ngForm (ngSubmit)="trackStock(f)">
+    <input id="stockInput" type="text" [name]="STOCK_SYMBOL_FIELD" required maxlength="5" ngModel>
+    <button id="trackBtn" [disabled]="!f.valid">Track Stock</button>
+  </form>
+</section>

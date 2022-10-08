@@ -1,0 +1,9 @@
+<section class="list-stocks__wrapper">
+
+  <ng-container *ngFor="let stockQuote of trackedStocks;index as i;">
+    <app-stock-quote [symbol]="stockQuote" (untrack)="untrackStock(i)">
+    </app-stock-quote>
+  </ng-container>
+
+</section>
+
