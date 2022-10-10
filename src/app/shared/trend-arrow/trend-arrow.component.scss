@@ -1,0 +1,15 @@
+$component: 'trend-arrow';
+
+.#{$component} {
+  &__up {
+    color: lawngreen;
+  }
+
+  &__down {
+    color: red;
+  }
+
+  &__stale {
+    color: dodgerblue;
+  }
+}

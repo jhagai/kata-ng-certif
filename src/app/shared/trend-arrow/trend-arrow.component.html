@@ -1,0 +1,16 @@
+<ng-container [ngSwitch]="trend">
+  <span *ngSwitchCase="TREND_UP" class="trend-arrow__up">
+    &#8599;
+  </span>
+  <span *ngSwitchCase="TREND_DOWN" class="trend-arrow__down">
+    &#8600;
+  </span>
+  <span *ngSwitchDefault class="trend-arrow__stale">
+    &rarr;
+  </span>
+</ng-container>
+
+
+
+
+

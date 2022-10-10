@@ -1,0 +1,40 @@
+<div class="stock-card__header">
+  <div class="stock-card__symbol">
+    {{ stockQuote.symbol }}
+  </div>
+
+  <div class="stock-card__name">
+    {{ stockQuote.companyName }}
+  </div>
+
+  <button [id]="removeBtnId" type="button" class="stock-card__close"
+          (click)="untrack.emit()">
+    X
+  </button>
+</div>
+<div class="stock-card__content">
+  <div class="success__content">
+    <div class="success__percent_change">
+      <label>Change today</label>
+      <div>{{ (quote.percentChange / 100) | percent:'0.0-2' }}</div>
+    </div>
+    <div class="success__high_price">
+      <label>Opening price</label>
+      <div>{{ quote.openingPrinceOfTheDay | currency:'USD' }}</div>
+    </div>
+    <div class="success__percent_today">
+      <label>Current price</label>
+      <div>{{ quote.currentPrice | currency:'USD' }}</div>
+    </div>
+    <div class="success__opening_price">
+      <label>High price</label>
+      <div>{{ quote.highPriceOfTheDay | currency:'USD' }}</div>
+    </div>
+    <div class="success__trend">
+      <app-trend-arrow [value]="quote.percentChange"></app-trend-arrow>
+      <a [id]="sentimentBtnId"
+         [routerLink]="link"> See sentiment
+        details</a>
+    </div>
+  </div>
+</div>

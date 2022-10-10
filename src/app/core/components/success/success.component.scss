@@ -1,0 +1,61 @@
+$component: 'success';
+
+.#{$component} {
+
+  &__content {
+    display: grid;
+    grid-template:  "pc hp t t"
+                    "pt op t t";
+    grid-gap: 1em;
+
+    label {
+      font-weight: bold;
+
+      &::after {
+        content: ":";
+      }
+    }
+  }
+
+  &__percent_change {
+    grid-area: pc;
+  }
+
+  &__high_price {
+    grid-area: hp;
+  }
+
+  &__opening_price {
+    grid-area: op;
+  }
+
+  &__arrow {
+    font-size: 3em;
+    text-align: center;
+
+    &-up {
+      color: lawngreen;
+      @extend .#{$component}__arrow;
+    }
+
+    &-down {
+      color: red;
+      @extend .#{$component}__arrow;
+    }
+
+    &-stale {
+      color: dodgerblue;
+      @extend .#{$component}__arrow;
+    }
+  }
+
+  &__trend {
+    grid-area: t;
+    margin: auto;
+  }
+}
+
+app-trend-arrow {
+  font-size: 3em;
+  display: block;
+}

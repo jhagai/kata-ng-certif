@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SentimentComponent } from './sentiment.component';
+import {SentimentComponent} from './sentiment.component';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('SentimentComponent', () => {
   let component: SentimentComponent;
@@ -8,9 +9,10 @@ describe('SentimentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SentimentComponent ]
+      declarations: [SentimentComponent],
+      imports: [RouterTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SentimentComponent);
     component = fixture.componentInstance;

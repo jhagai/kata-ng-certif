@@ -1,16 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StockQuoteComponent } from './stock-quote.component';
+import {StockQuoteComponent} from './stock-quote.component';
+import {StocksService} from "../../services/stocks.service";
+import SpyObj = jasmine.SpyObj;
+import createSpyObj = jasmine.createSpyObj;
 
-describe('StockSummaryComponent', () => {
+describe('StockQuoteComponent', () => {
   let component: StockQuoteComponent;
   let fixture: ComponentFixture<StockQuoteComponent>;
+  let stocksServiceSpy: SpyObj<StocksService>;
 
   beforeEach(async () => {
+    stocksServiceSpy = createSpyObj(StocksService, ['loadStock']);
     await TestBed.configureTestingModule({
-      declarations: [ StockQuoteComponent ]
+      declarations: [StockQuoteComponent],
+      providers: [{provide: StocksService, useValue: stocksServiceSpy}]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(StockQuoteComponent);
     component = fixture.componentInstance;
