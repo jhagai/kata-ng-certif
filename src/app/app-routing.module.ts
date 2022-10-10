@@ -12,7 +12,7 @@ const routes: Routes = [
     path: `sentiment/:${SYMBOL}`,
     loadChildren: () => import('./sentiment/sentiment.module').then(m => m.SentimentModule),
     resolve: {
-      sentiment: ({paramMap}: ActivatedRouteSnapshot) => {
+      sentiments: ({paramMap}: ActivatedRouteSnapshot) => {
         const symbol = paramMap.get(SYMBOL);
         if (!symbol) {
           return throwError(() => new Error('Symbol in route is mandatory.'));
@@ -22,6 +22,14 @@ const routes: Routes = [
         const from = new Date(to);
         from.setMonth(to.getMonth() - 2);
         return stocksService.loadSentiment(symbol, from, to);
+      },
+      stock: ({paramMap}: ActivatedRouteSnapshot) => {
+        const symbol = paramMap.get(SYMBOL);
+        if (!symbol) {
+          return throwError(() => new Error('Symbol in route is mandatory.'));
+        }
+        let stocksService = inject(StocksService);
+        return stocksService.loadStockCompany(symbol);
       }
     }
   }

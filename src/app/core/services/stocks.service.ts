@@ -13,7 +13,7 @@ import {SentimentModel} from "../models/sentiment.model";
 })
 export class StocksService {
 
-  private static readonly TRACKED_STOCKS_KEY = 'TRACKED_STOCKS_KEY';
+  public static readonly TRACKED_STOCKS_KEY = 'TRACKED_STOCKS_KEY';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -45,7 +45,7 @@ export class StocksService {
     );
   }
 
-  private loadStockCompany(stockSymbol: string): Observable<FinnhubSearchModel> {
+  loadStockCompany(stockSymbol: string): Observable<FinnhubSearchModel> {
     let params = (new HttpParams()).set('q', stockSymbol);
 
     return this.httpClient.get<SymbolSearchResult>(`search`, {params}).pipe(

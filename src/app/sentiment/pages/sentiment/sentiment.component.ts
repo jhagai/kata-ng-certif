@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {map, Observable} from "rxjs";
 import {SentimentModel} from "../../../core/models/sentiment.model";
+import {FinnhubSearchModel} from "../../../core/models/finnhub/finnhub-search.model";
 
 @Component({
   selector: 'app-sentiment',
@@ -10,15 +11,16 @@ import {SentimentModel} from "../../../core/models/sentiment.model";
 })
 export class SentimentComponent {
 
-  symbol$: Observable<string>;
-  sentiment$: Observable<SentimentModel[]>;
+  viewModel$: Observable<{ stock: FinnhubSearchModel, sentiments: SentimentModel[] }>;
 
   constructor(activatedRoute: ActivatedRoute) {
-    this.sentiment$ = activatedRoute.data.pipe(
-      map(data => data['sentiment'])
+    this.viewModel$ = activatedRoute.data.pipe(
+      map(data => ({
+          stock: data['stock'],
+          sentiments: data['sentiments']
+        })
+      )
     );
-
-    this.symbol$ = activatedRoute.paramMap.pipe(map(paramMap => paramMap.get('symbol') ?? ''));
   }
 
   trackByFn(_: number, sentiment: SentimentModel): Date {

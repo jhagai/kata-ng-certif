@@ -33,7 +33,7 @@
     <div class="success__trend">
       <app-trend-arrow [value]="quote.percentChange"></app-trend-arrow>
       <a [id]="sentimentBtnId"
-         [routerLink]="link"> See sentiment
+         [routerLink]="link" [state]="{symbol: stockQuote.symbol, companyName: stockQuote.companyName}"> See sentiment
         details</a>
     </div>
   </div>

@@ -1,15 +1,14 @@
-<div>
+<div *ngIf="viewModel$ | async as viewModel">
   <div class="stock-card__header">
     <div class="stock-card__symbol">
-      {{ symbol$ | async }}
+      {{ viewModel.stock.symbol }}
     </div>
-
     <div class="stock-card__name">
-      {{ symbol$ | async }}
+      {{ viewModel.stock.description }}
     </div>
   </div>
   <div class="stock-card__content">
-    <div class="sentiment__months" *ngIf="sentiment$ | async as sentiment">
+    <div class="sentiment__months" *ngIf="viewModel.sentiments as sentiment">
       <div *ngFor="let sentimentMonth of sentiment; trackBy: trackByFn" class="sentiment__month">
         <div class="sentiment__date">
           {{ sentimentMonth.date | date:'MMM y' }}
